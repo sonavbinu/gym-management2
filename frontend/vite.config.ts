@@ -3,7 +3,4 @@ import tailwindcss from '@tailwindcss/vite';
 
 export default defineConfig({
   plugins: [tailwindcss()],
-  define: {
-    'process.env': 'import.meta.env'
-  }
 });
