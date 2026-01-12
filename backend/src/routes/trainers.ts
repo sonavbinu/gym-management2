@@ -1,18 +1,48 @@
 import express from 'express';
-import { getAllTrainers, assignMember } from '../controllers/trainerController';
+import {
+  getAllTrainers,
+  createTrainer,
+  getTrainerById,
+  assignMember,
+  unassignMember,
+  updateTrainer,
+  deleteTrainer,
+  getMyAssignedMembers,
+  getMyAssignedMembersSubscriptions,
+  getMyProfile,
+} from '../controllers/trainerController';
 import { auth } from '../middleware/auth';
 import { roleCheck } from '../middleware/roleCheck';
 import { UserRole } from '../types';
 
 const router = express.Router();
 
-// All routes require authentication
 router.use(auth);
 
-// Routes accessible by admin and trainers
-router.get('/', roleCheck(UserRole.ADMIN, UserRole.TRAINER), getAllTrainers);
+router.get('/', getAllTrainers);
 
-// Admin only routes
+router.get(
+  '/me',
+  roleCheck(UserRole.TRAINER),
+  (req, res, next) => {
+    console.log(' GET /api/trainers/me called');
+    next();
+  },
+  getMyProfile
+);
+router.get('/my-members', roleCheck(UserRole.TRAINER), getMyAssignedMembers);
+router.get(
+  '/my-subscriptions',
+  roleCheck(UserRole.TRAINER),
+  getMyAssignedMembersSubscriptions
+);
+
+router.get('/:id', getTrainerById);
+
+router.post('/', roleCheck(UserRole.ADMIN), createTrainer);
 router.post('/assign', roleCheck(UserRole.ADMIN), assignMember);
+router.post('/unassign', roleCheck(UserRole.ADMIN), unassignMember);
+router.put('/:id', roleCheck(UserRole.ADMIN), updateTrainer);
+router.delete('/:id', roleCheck(UserRole.ADMIN), deleteTrainer);
 
 export default router;

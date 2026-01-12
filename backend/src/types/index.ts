@@ -7,9 +7,10 @@ export enum UserRole {
 }
 
 export enum SubscriptionStatus {
-  ACTIVE = 'active',
-  EXPIRED = 'expired',
-  PAUSED = 'paused',
+  ACTIVE = 'ACTIVE',
+  PAUSED = 'PAUSED',
+  EXPIRED = 'EXPIRED',
+  CANCELLED = 'CANCELLED',
 }
 
 export enum PaymentMethod {

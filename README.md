@@ -51,7 +51,7 @@ A full-stack subscription-based gym management system built with TypeScript, Rea
 1. **Clone the repository**
 
 ```bash
-git clone <your-repo-url>
+git clone https://github.com/sonavbinu/Gym-Management-System.git
 cd Gym-Management-System
 ```
 
@@ -75,8 +75,9 @@ Create `backend/.env`:
 
 ```env
 PORT=5000
-MONGODB_URI=mongodb://localhost:27017/gym-management
-JWT_SECRET=your-super-secret-jwt-key-change-this
+MONGODB_URI=mongodb+srv://sonavbinu567_db_user:O4hg0Vcwcnm6bLsT@cluster0.qr9me5e.mongodb.net/?appName=Cluster0
+
+JWT_SECRET=GymManagementSystem2026
 NODE_ENV=development
 ```
 
