@@ -11,7 +11,7 @@ const MembersPage = () => {
   const navigate = useNavigate();
   const { user } = useAuth();
   const isAdmin = user?.role === UserRole.ADMIN;
-  const isTrainer = user?.role === UserRole.TRAINER;
+  // const isTrainer = user?.role === UserRole.TRAINER;
 
   const [members, setMembers] = useState<Member[]>([]);
   const [trainers, setTrainers] = useState<Trainer[]>([]);
@@ -243,7 +243,8 @@ const MembersPage = () => {
                     <span>💳</span>
                     <span>Subscription</span>
                   </p>
-                  {member.currentSubscription?.status === SubscriptionStatus.ACTIVE ? (
+                  {member.currentSubscription?.status ===
+                  SubscriptionStatus.ACTIVE ? (
                     <span className="inline-block px-3 py-1.5 bg-green-100 text-green-700 rounded-full text-xs font-bold uppercase tracking-wide">
                       ✓ Active
                     </span>

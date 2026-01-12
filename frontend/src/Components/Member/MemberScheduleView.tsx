@@ -16,6 +16,7 @@ const MemberScheduleView = () => {
       const profile = await memberAPI.getMyProfile();
       const id = (profile.data as any)._id || profile.data.id;
       setMemberId(id);
+      memberId;
 
       const res = await scheduleAPI.getMemberSchedule(id);
       setSchedules(res.data);
